@@ -1,0 +1,71 @@
+<mujoco model="dog">
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+
+  <worldbody>
+    <light diffuse="1 1 1" pos="0 0 3"/>
+    <geom type="plane" size="5 5 0.1" rgba="0.9 0.9 0.9 1"/>
+
+    <!-- Torso -->
+    <body name="torso" pos="0 0 0.25">
+      <freejoint/>
+      <geom type="box" size="0.12 0.05 0.03" rgba="0.3 0.3 0.3 1" mass="2"/>
+
+      <!-- Front Left -->
+      <body pos="0.10 0.05 0">
+        <joint name="fl_hip" type="hinge" axis="0 1 0" range="-60 60"/>
+        <geom type="capsule" fromto="0 0 0 0 0 -0.10" size="0.015" mass="0.2"/>
+        <body pos="0 0 -0.10">
+          <joint name="fl_knee" type="hinge" axis="0 1 0" range="-90 30"/>
+          <geom type="capsule" fromto="0 0 0 0 0 -0.12" size="0.014" mass="0.2"/>
+          <geom type="sphere" pos="0 0 -0.12" size="0.02" rgba="0.1 0.1 0.1 1"/>
+        </body>
+      </body>
+
+      <!-- Front Right -->
+      <body pos="0.10 -0.05 0">
+        <joint name="fr_hip" type="hinge" axis="0 1 0" range="-60 60"/>
+        <geom type="capsule" fromto="0 0 0 0 0 -0.10" size="0.015" mass="0.2"/>
+        <body pos="0 0 -0.10">
+          <joint name="fr_knee" type="hinge" axis="0 1 0" range="-90 30"/>
+          <geom type="capsule" fromto="0 0 0 0 0 -0.12" size="0.014" mass="0.2"/>
+          <geom type="sphere" pos="0 0 -0.12" size="0.02" rgba="0.1 0.1 0.1 1"/>
+        </body>
+      </body>
+
+      <!-- Back Left -->
+      <body pos="-0.10 0.05 0">
+        <joint name="bl_hip" type="hinge" axis="0 1 0" range="-60 60"/>
+        <geom type="capsule" fromto="0 0 0 0 0 -0.10" size="0.015" mass="0.2"/>
+        <body pos="0 0 -0.10">
+          <joint name="bl_knee" type="hinge" axis="0 1 0" range="-90 30"/>
+          <geom type="capsule" fromto="0 0 0 0 0 -0.12" size="0.014" mass="0.2"/>
+          <geom type="sphere" pos="0 0 -0.12" size="0.02" rgba="0.1 0.1 0.1 1"/>
+        </body>
+      </body>
+
+      <!-- Back Right -->
+      <body pos="-0.10 -0.05 0">
+        <joint name="br_hip" type="hinge" axis="0 1 0" range="-60 60"/>
+        <geom type="capsule" fromto="0 0 0 0 0 -0.10" size="0.015" mass="0.2"/>
+        <body pos="0 0 -0.10">
+          <joint name="br_knee" type="hinge" axis="0 1 0" range="-90 30"/>
+          <geom type="capsule" fromto="0 0 0 0 0 -0.12" size="0.014" mass="0.2"/>
+          <geom type="sphere" pos="0 0 -0.12" size="0.02" rgba="0.1 0.1 0.1 1"/>
+        </body>
+      </body>
+
+    </body>
+  </worldbody>
+
+  <!-- Torque motors for every joint (±20 Nm) -->
+  <actuator>
+    <motor joint="fl_hip"  ctrlrange="-20 20" gear="1"/>
+    <motor joint="fl_knee" ctrlrange="-20 20" gear="1"/>
+    <motor joint="fr_hip"  ctrlrange="-20 20" gear="1"/>
+    <motor joint="fr_knee" ctrlrange="-20 20" gear="1"/>
+    <motor joint="bl_hip"  ctrlrange="-20 20" gear="1"/>
+    <motor joint="bl_knee" ctrlrange="-20 20" gear="1"/>
+    <motor joint="br_hip"  ctrlrange="-20 20" gear="1"/>
+    <motor joint="br_knee" ctrlrange="-20 20" gear="1"/>
+  </actuator>
+</mujoco>
